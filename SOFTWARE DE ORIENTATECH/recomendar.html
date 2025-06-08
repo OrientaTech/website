@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recomendador de Carreras</title>
+  <link rel="icon" href="Icono/icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🚀 Descubre tu carrera ideal</h1>
+    <p class="intro">Responde unas breves preguntas para conocer la carrera que mejor encaja contigo.</p>
+    <div class="form">
+      <label for="area">🌟 ¿Qué área te atrae más?</label>
+      <select id="area">
+        <option value="">Selecciona una opción</option>
+        <option value="tecnologia">Tecnología</option>
+        <option value="salud">Salud</option>
+        <option value="negocios">Negocios</option>
+        <option value="arte">Arte y Diseño</option>
+        <option value="educacion">Educación</option>
+      </select>
+      <label for="estilo">🧠 ¿Qué estilo de trabajo prefieres?</label>
+      <select id="estilo">
+        <option value="">Selecciona una opción</option>
+        <option value="investigacion">Investigación</option>
+        <option value="creativo">Creativo</option>
+        <option value="practico">Práctico</option>
+        <option value="social">Social</option>
+      </select>
+      <button class="card" onclick="recomendarCarrera()">Descubrir mi carrera</button>
+      <div id="resultado" class="resultado oculto"></div>
+    </div>
+  </div>
+  <div class="navigation">
+    <button class="card" onclick="window.location.href='index.html'">⬅️ Retroceder</button>
+    <button class="card" onclick="window.location.href='seleccionar.html'">🎮 Ir a Simulación</button>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

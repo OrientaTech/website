@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulación</title>
+  <link rel="icon" href="Icono/icon.png">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      background-color: black;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    #video-carrera {
+      width: 100%;
+      height: auto;
+      max-height: 90vh;
+    }
+
+    #titulo-video {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    #mensaje-final {
+      display: none;
+      font-size: 1.2rem;
+      margin-top: 20px;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="titulo-video">Simulación</h1>
+
+  <video id="video-carrera" controls autoplay></video>
+
+  <!-- Mensaje cuando termina el video -->
+  <div id="mensaje-final">Redirigiendo...</div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const carrera = params.get("carrera");
+
+    const titulo = document.getElementById("titulo-video");
+    const video = document.getElementById("video-carrera");
+    const mensaje = document.getElementById("mensaje-final");
+
+    // Cambiar título dinámicamente
+    if (carrera) {
+      titulo.textContent = `Simulación: ${carrera.charAt(0).toUpperCase() + carrera.slice(1)}`;
+    }
+
+    // Videos por carrera
+    const videos = {
+      medicina: "../videos-1/Medicina.mp4",
+      ingenieria: "../videos-1/Ingenieria.mp4",
+      diseno: "../videos-1/Diseño.mp4",
+      gastronomia: "../videos-1/Gastronomia.mp4",
+      administracion: "../videos-1/Administración.mp4"
+    };
+
+    if (videos[carrera]) {
+      video.src = videos[carrera];
+    } else {
+      titulo.textContent = "Carrera no encontrada";
+      video.style.display = "none";
+    }
+
+    // Redirigir automáticamente al terminar el video
+    video.addEventListener('ended', () => {
+      mensaje.style.display = 'block';
+      setTimeout(() => {
+        window.location.href = 'seleccionar.html';
+      }, 2000); // espera 2 segundos antes de redirigir
+    });
+  </script>
+</body>
+</html>
